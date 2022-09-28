@@ -58,8 +58,20 @@ const Title = styled.h1`
 
 const TwoColumnLayout = styled.div`
   display: grid;
-  gridtemplatecolumns: 70% 30%;
-  gridcolumngap: 1rem;
+  grid-template-columns: 70% 30%;
+  grid-column-gap: 1rem;
+`;
+
+const Container = styled.div`
+  margin: auto;
+  width: 800px;
+  paddingtop: 1rem;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  font-size: x-large;
+  padding: 0.2 rem;
 `;
 
 function App() {
@@ -74,16 +86,10 @@ function App() {
   }, []);
 
   return (
-    <div
-      style={{
-        margin: "auto",
-        width: 800,
-        paddingTop: "1rem",
-      }}
-    >
+    <Container>
       <Title>Pokemon Search</Title>
-      <input value={filter} onChange={(evt) => filterSet(evt.target.value)} />
       <TwoColumnLayout>
+        <Input value={filter} onChange={(evt) => filterSet(evt.target.value)} />
         <div>
           <table width="100%">
             <thead>
@@ -112,7 +118,7 @@ function App() {
         </div>
         {selectedItem && <PokemonInfo {...selectedItem} />}
       </TwoColumnLayout>
-    </div>
+    </Container>
   );
 }
 
