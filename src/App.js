@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes, { object, resetWarningCache } from "prop-types";
+import styled from "@emotion/styled";
 
 import "./App.css";
 
@@ -51,6 +52,16 @@ PokemonInfo.propTypes = {
   }),
 };
 
+const Title = styled.h1`
+  text-align: center;
+`;
+
+const TwoColumnLayout = styled.div`
+  display: grid;
+  gridtemplatecolumns: 70% 30%;
+  gridcolumngap: 1rem;
+`;
+
 function App() {
   const [filter, filterSet] = React.useState("");
   const [pokemon, pokemonSet] = React.useState([]);
@@ -70,15 +81,9 @@ function App() {
         paddingTop: "1rem",
       }}
     >
-      <h1 className="title">Pokemon Search</h1>
+      <Title>Pokemon Search</Title>
       <input value={filter} onChange={(evt) => filterSet(evt.target.value)} />
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "70% 30%",
-          gridColumnGap: "1rem",
-        }}
-      >
+      <TwoColumnLayout>
         <div>
           <table width="100%">
             <thead>
@@ -106,7 +111,7 @@ function App() {
           </table>
         </div>
         {selectedItem && <PokemonInfo {...selectedItem} />}
-      </div>
+      </TwoColumnLayout>
     </div>
   );
 }
