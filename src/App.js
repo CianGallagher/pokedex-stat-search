@@ -88,8 +88,8 @@ function App() {
   return (
     <Container>
       <Title>Pokemon Search</Title>
+      <Input value={filter} onChange={(evt) => filterSet(evt.target.value)} />
       <TwoColumnLayout>
-        <Input value={filter} onChange={(evt) => filterSet(evt.target.value)} />
         <div>
           <table width="100%">
             <thead>
